@@ -1,16 +1,15 @@
-# Nome do projeto 3
-Escreva um ou dois parágrafos resumindo o objetivo do seu projeto.
+# Biblioteca em JAVA
+Sistema em java de gerenciamento de uma biblioteca contendo livros, DVD's, CD's, teses, revistas. Onde estes dependendo do tipo podem ser emprestados ou não.
 
 ## Alunos integrantes da equipe
 
-* Nome completo do aluno 1
-* Nome completo do aluno 2
-* Nome completo do aluno 3
-* Nome completo do aluno 4
-* Nome completo do aluno 4
-* Nome completo do aluno 4
+* Daniel Campos
+* Felipe Parreiras
+* Lucas Vilela
+* Itamar Silva
+
 
 ## Professor responsável 
 
-* Nome completo do professor 1
+* Luiz Henrique 
 
