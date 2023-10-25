@@ -40,11 +40,12 @@ public class Main{
 			System.out.println("Menu: ");
 			System.out.println("1) Lista de Clientes");
 			System.out.println("2) Catalogo");
-			System.out.println("3) Add Cliente");
-			System.out.println("4) Add Item");
+			System.out.println("3) Gerenciar Cliente");
+			System.out.println("4) Gerenciar Item");
 			System.out.println("5) Sair");
 			
 			chave = scan.nextInt();
+			int key=0;
 			switch (chave) {
 			case 1:
 				biblioteca.listarUsuarios();
@@ -53,10 +54,36 @@ public class Main{
 				biblioteca.listarItens();
 				break;
 			case 3:
-				biblioteca.criarUsuario();
+				System.out.println("Gerenciando Usuarios:");
+				System.out.println("1) Adicionar");
+				System.out.println("2) Remover");
+				key = scan.nextInt();
+				switch (key) {
+				case 1:
+					biblioteca.criarUsuario();
+					break;
+				case 2:
+					biblioteca.removerUsuario();
+					break;
+				default:
+					break;
+				}
 				break;
 			case 4:
-				biblioteca.criarItem();
+				System.out.println("Gerenciando Itens:");
+				System.out.println("1) Adicionar");
+				System.out.println("2) Remover");
+				key = scan.nextInt();
+				switch (key) {
+				case 1:
+					biblioteca.criarItem();
+					break;
+				case 2:
+					biblioteca.removerItem();
+					break;
+				default:
+					break;
+				}
 				break;
 			case 5:
 				System.out.println("Programa Encerrado!");

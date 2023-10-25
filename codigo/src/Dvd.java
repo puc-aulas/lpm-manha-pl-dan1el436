@@ -25,7 +25,7 @@ public class Dvd extends Item implements ItemAlugavel {
 	}
 	@Override
 	public void alugar() {
-		// TODO Auto-generated method stub
+		
 		
 	}
 }

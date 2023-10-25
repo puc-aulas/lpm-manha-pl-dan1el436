@@ -50,6 +50,26 @@ public class Biblioteca {
 			}
 		}
 	}
+	public void removerUsuario() {
+		int key = 0;
+		while (key!=2) {
+			System.out.println("Voce gostaria de remover um Cliente?");
+			System.out.println("1) Sim");
+			System.out.println("2) Nao");
+			key = scan.nextInt();
+			switch (key) {
+			case 1:
+				System.out.println("Qual o Cliente?");
+				for (int i = 0;i<this.usuarios.size();i++) {
+					System.out.println(i+1+": "+ this.usuarios.get(i).getNome());
+				}
+				System.out.println("-----------------------");
+				key = scan.nextInt();
+				this.usuarios.remove(key-1);
+				System.out.println("Cliente: "+ key+" Removido!");
+				}
+		}
+}
 	public void listarUsuarios() {
 		System.out.println("Usuarios:");
 		for (int i = 0;i<this.usuarios.size();i++) {
@@ -213,6 +233,26 @@ public class Biblioteca {
 				}
 				}
 		}
+	}
+		public void removerItem() {
+			int key = 0;
+			while (key!=2) {
+				System.out.println("Voce gostaria de remover um item?");
+				System.out.println("1) Sim");
+				System.out.println("2) Nao");
+				key = scan.nextInt();
+				switch (key) {
+				case 1:
+					System.out.println("Qual o item?");
+					for (int i = 0;i<this.itens.size();i++) {
+						System.out.println(i+1 +": "+ this.itens.get(i).getTitulo());
+					}
+					System.out.println("-----------------------");
+					key = scan.nextInt();
+					this.itens.remove(key-1);
+					System.out.println("Item: "+ key+" Removido!");
+					}
+			}
 	}
 	public void listarItens() {
 		System.out.println("Voce gostaria de resumir as informacoes do catalogo?");
