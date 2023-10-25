@@ -27,10 +27,9 @@ public class Cd extends Item implements ItemAlugavel {
 	}
 
 	@Override
-	public void alugar() {
+	public boolean alugar() {
 	
-		
-		
+		return true;
 	}
 	
 }

@@ -24,8 +24,8 @@ public class Dvd extends Item implements ItemAlugavel {
 		this.genero = genero;
 	}
 	@Override
-	public void alugar() {
+	public boolean alugar() {
 		
-		
+		return true;
 	}
 }

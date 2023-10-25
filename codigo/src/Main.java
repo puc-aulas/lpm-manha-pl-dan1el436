@@ -27,7 +27,7 @@ public class Main{
 		biblioteca.adicionarDvd("A Pequena Sereia","Disney","Dvd","2023",3,3,5,3,"Aventura");
 		
 		biblioteca.adicionarLivro("Dracula","Bram Stoker","Livro","2023",3,3,5,"Terror","A presença profana de Drácula condena a tripulação do navio mercante Demeter.");
-		biblioteca.adicionarLivro("O Senhor dos Aneis","J. R. R. Tolkien","Livro","2023",3,3,5,"Aventura","O Senhor dos Anéis é um livro de alta fantasia, escrito pelo escritor britânico J. R. R. Tolkien. Escrita entre 1937 e 1949, com muitas partes criadas durante a Segunda Guerra Mundial, a saga é uma continuação de O Hobbit.");
+		biblioteca.adicionarLivro("O Senhor dos Aneis","Tolkien","Livro","2023",3,3,5,"Aventura","O Senhor dos Anéis é um livro de alta fantasia, escrito pelo escritor britânico J. R. R. Tolkien. Escrita entre 1937 e 1949, com muitas partes criadas durante a Segunda Guerra Mundial, a saga é uma continuação de O Hobbit.");
 		biblioteca.adicionarLivro("Como treinar seu dragao","Cressida Cowell","Livro","2023",3,3,5,"Aventura","How to Train Your Dragon é uma série de livros infantojuvenil criados pela escritora Cressida Cowell e lançado pela editora Holden Children's Books em 27 de junho de 2003 no Reino Unido. A série é dividida em treze livros, com onze lançados, e dois extras. No Brasil, a série foi lançada pela Editora Intrínseca.");
 		
 		Scanner scan = new Scanner(System.in);
@@ -36,13 +36,14 @@ public class Main{
 		System.out.println("-----------------------");
 		System.out.println("Bem Vindo a biblioteca!");
 		System.out.println("-----------------------");
-		while (chave != 5) {
+		while (chave != 6) {
 			System.out.println("Menu: ");
 			System.out.println("1) Lista de Clientes");
 			System.out.println("2) Catalogo");
 			System.out.println("3) Gerenciar Cliente");
 			System.out.println("4) Gerenciar Item");
-			System.out.println("5) Sair");
+			System.out.println("5) Alugueis");
+			System.out.println("6) Sair");
 			
 			chave = scan.nextInt();
 			int key=0;
@@ -86,6 +87,23 @@ public class Main{
 				}
 				break;
 			case 5:
+				System.out.println("Alugueis:");
+				System.out.println("1) Alugar");
+				System.out.println("2) Historico");
+				System.out.println("3) Sair");
+				key = scan.nextInt();
+				switch (key) {
+				case 1:
+					biblioteca.criarAluguel();
+					break;
+				case 2:
+					biblioteca.listarAlugueis();
+					break;
+				default:
+					break;
+				}
+				break;
+			case 6:
 				System.out.println("Programa Encerrado!");
 				break;
 			default:

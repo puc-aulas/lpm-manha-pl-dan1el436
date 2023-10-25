@@ -28,10 +28,8 @@ public class Livro extends Item implements ItemAlugavel{
 	}
 
 	@Override
-	public void alugar() {
-		// TODO Auto-generated method stub
+	public boolean alugar() {
 		
+		return true;
 	}
-
-	
 }

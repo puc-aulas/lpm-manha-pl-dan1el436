@@ -1,4 +1,4 @@
 
 public interface ItemAlugavel {
-	 void alugar();
+	 boolean alugar();
 }
