@@ -10,19 +10,17 @@ public class Main{
 		biblioteca.adicionarUsuario("Daniel", "122.383.956-79");
 		biblioteca.adicionarUsuario("Itamar", "122.383.956-79");
 		
-		String[] materias = new String[5];
-		biblioteca.adicionarRevista("Quatro Rodas (outubro-2023)","Felipe","Revista","2023",3,3,5,materias);
-		biblioteca.adicionarRevista("Caras (outubro-2023)","Felipe","Revista","2023",3,3,5,materias);
-		biblioteca.adicionarRevista("Veja (outubro-2023)","Felipe","Revista","2023",3,3,5,materias);
+		biblioteca.adicionarRevista("Quatro Rodas (outubro-2023)","Felipe","Revista","2023",3,3,5,5);
+		biblioteca.adicionarRevista("Caras (outubro-2023)","Felipe","Revista","2023",3,3,5,5);
+		biblioteca.adicionarRevista("Veja (outubro-2023)","Felipe","Revista","2023",3,3,5,5);
 		
 		biblioteca.adicionarTese("Inteligencia Artificial","Felipe","Tese","2023",3,3,5,"Tecnologia","Como a Inteligencia Artificial pode ajudar os Alunos");
 		biblioteca.adicionarTese("Programacao Modular","Felipe","Tese","2023",3,3,5,"Tecnologia","Como a Programacao Modular pode ajudar os Alunos");
 		biblioteca.adicionarTese("Java","Felipe","Tese","2023",3,3,5,"Tecnologia","Como Java se matem no mercado a Tantos anos");
 		
-		String[] musicas = new String[5];
-		biblioteca.adicionarCd("Ao Vivo Em Goiania","Jorge e Matheus","Cd","2003",3,3,5,musicas,15);
-		biblioteca.adicionarCd("A ultima dose de amor","Felipe","Cd","2023",3,3,5,musicas,15);
-		biblioteca.adicionarCd("Esquenta Sertanejo","Spotfy","Cd","2023",3,3,5,musicas,15);
+		biblioteca.adicionarCd("Ao Vivo Em Goiania","Jorge e Matheus","Cd","2003",3,3,5,5,15);
+		biblioteca.adicionarCd("A ultima dose de amor","Felipe","Cd","2023",3,3,5,5,15);
+		biblioteca.adicionarCd("Esquenta Sertanejo","Spotfy","Cd","2023",3,3,5,5,15);
 		
 		biblioteca.adicionarDvd("Avatar","Disney","Dvd","2023",3,3,5,2,"Aventura");
 		biblioteca.adicionarDvd("O Rei Leao","Disney","Dvd","2023",3,3,5,2,"Aventura");
@@ -33,19 +31,21 @@ public class Main{
 		biblioteca.adicionarLivro("Como treinar seu dragao","Cressida Cowell","Livro","2023",3,3,5,"Aventura","How to Train Your Dragon é uma série de livros infantojuvenil criados pela escritora Cressida Cowell e lançado pela editora Holden Children's Books em 27 de junho de 2003 no Reino Unido. A série é dividida em treze livros, com onze lançados, e dois extras. No Brasil, a série foi lançada pela Editora Intrínseca.");
 		
 		Scanner scan = new Scanner(System.in);
-		int key = 0;
+		int chave = 0;
 		
 		System.out.println("-----------------------");
 		System.out.println("Bem Vindo a biblioteca!");
 		System.out.println("-----------------------");
-		while (key != 3) {
+		while (chave != 5) {
 			System.out.println("Menu: ");
 			System.out.println("1) Lista de Clientes");
 			System.out.println("2) Catalogo");
-			System.out.println("3) Sair");
+			System.out.println("3) Add Cliente");
+			System.out.println("4) Add Item");
+			System.out.println("5) Sair");
 			
-			key = scan.nextInt();
-			switch (key) {
+			chave = scan.nextInt();
+			switch (chave) {
 			case 1:
 				biblioteca.listarUsuarios();
 				break;
@@ -53,6 +53,12 @@ public class Main{
 				biblioteca.listarItens();
 				break;
 			case 3:
+				biblioteca.criarUsuario();
+				break;
+			case 4:
+				biblioteca.criarItem();
+				break;
+			case 5:
 				System.out.println("Programa Encerrado!");
 				break;
 			default:

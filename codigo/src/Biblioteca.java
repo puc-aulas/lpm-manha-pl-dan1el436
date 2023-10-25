@@ -29,7 +29,27 @@ public class Biblioteca {
 		Usuario novoUsuario = new Usuario(nome, cpf);
 		this.usuarios.add(novoUsuario);
 	}
-	
+	public void criarUsuario() {
+		int chave = 0;
+		while (chave!=2) {
+			System.out.println("Voce gostaria de adicionar um novo usuario?");
+			System.out.println("1) Sim");
+			System.out.println("2) Nao");
+			chave = scan.nextInt();
+			switch (chave) {
+			case 1:
+				System.out.println("Insira o nome");
+				String nome = scan.next();
+				System.out.println("Insira o cpf");
+				String cpf = scan.next();
+				adicionarUsuario(nome, cpf);
+				break;
+
+			default:
+				break;
+			}
+		}
+	}
 	public void listarUsuarios() {
 		System.out.println("Usuarios:");
 		for (int i = 0;i<this.usuarios.size();i++) {
@@ -39,29 +59,160 @@ public class Biblioteca {
 	}
 	
 	public void adicionarRevista (String titulo, String autor, String tipo, String anoPublicado, int quantidadeTotal, int quantidadeDisponivel,
-			int avaliacao, String[] materias) {
+			int avaliacao, int materias) {
 		Item novoItem = new Revista(titulo, autor,tipo,anoPublicado,quantidadeTotal,quantidadeDisponivel,avaliacao,materias);
 		this.itens.add(novoItem);
+	}
+	public void criarRevista() {
+		System.out.println("Insira o Titulo");
+		String tituloItem = scan.next();
+		System.out.println("Insira o Autor");
+		String autorItem = scan.next();
+		String tipoItem = "Revista";
+		System.out.println("Insira o Ano Publicado");
+		String anoItem = scan.next();
+		System.out.println("Insira o Quantidade Total");
+		int quantTotalItem = scan.nextInt();
+		int quantDispItem = quantTotalItem;
+		System.out.println("Insira a Avaliacao");
+		int avaliacaoItem = scan.nextInt();
+		System.out.println("Insira a Quantidade de Materias");
+		int quantMateriasItem = scan.nextInt();
+		adicionarRevista(tituloItem, autorItem, tipoItem, anoItem, quantTotalItem, quantDispItem, avaliacaoItem, quantMateriasItem);
 	}
 	public void adicionarTese (String titulo, String autor, String tipo, String anoPublicado, int quantidadeTotal,
 			int quantidadeDisponivel, int avaliacao, String assunto, String sinopse) {
 		Item novoItem = new Tese(titulo, autor,tipo,anoPublicado,quantidadeTotal,quantidadeDisponivel,avaliacao,assunto,sinopse);
 		this.itens.add(novoItem);
 	}
+	public void criarTese() {
+		System.out.println("Insira o Titulo");
+		String tituloItem = scan.next();
+		System.out.println("Insira o Autor");
+		String autorItem = scan.next();
+		String tipoItem = "Tese";
+		System.out.println("Insira o Ano Publicado");
+		String anoItem = scan.next();
+		System.out.println("Insira o Quantidade Total");
+		int quantTotalItem = scan.nextInt();
+		int quantDispItem = quantTotalItem;
+		System.out.println("Insira a Avaliacao");
+		int avaliacaoItem = scan.nextInt();
+		System.out.println("Insira a Sinopse da Tese?");
+		String sinopseItem = scan.next();
+		System.out.println("Insira o Assunto");
+		String assuntoItem = scan.next();
+		adicionarTese(tituloItem, autorItem, tipoItem, anoItem, quantTotalItem, quantDispItem, avaliacaoItem, assuntoItem, sinopseItem);
+	}
 	public void adicionarDvd (String titulo, String autor, String tipo, String anoPublicado, int quantidadeTotal,
 			int quantidadeDisponivel, int avaliacao, int duracao, String genero) {
 		Item novoItem = new Dvd(titulo, autor,tipo,anoPublicado,quantidadeTotal,quantidadeDisponivel,avaliacao,duracao,genero);
 		this.itens.add(novoItem);
 	}
+	public void criarDvd() {
+		System.out.println("Insira o Titulo");
+		String tituloItem = scan.next();
+		System.out.println("Insira o Autor");
+		String autorItem = scan.next();
+		String tipoItem = "Dvd";
+		System.out.println("Insira o Ano Publicado");
+		String anoItem = scan.next();
+		System.out.println("Insira o Quantidade Total");
+		int quantTotalItem = scan.nextInt();
+		int quantDispItem = quantTotalItem;
+		System.out.println("Insira a Avaliacao");
+		int avaliacaoItem = scan.nextInt();
+		System.out.println("Insira a Duracao do Dvd?");
+		int duracaoItem = scan.nextInt();
+		System.out.println("Insira o Genero");
+		String generoItem = scan.next();
+		adicionarDvd(tituloItem, autorItem, tipoItem, anoItem, quantTotalItem, quantDispItem, avaliacaoItem, duracaoItem, generoItem);
+	}
 	public void adicionarCd (String titulo, String autor, String tipo, String anoPublicado, int quantidadeTotal,
-			int quantidadeDisponivel, int avaliacao, String[] musicas, int duracao) {
+			int quantidadeDisponivel, int avaliacao, int musicas, int duracao) {
 		Item novoItem = new Cd(titulo, autor,tipo,anoPublicado,quantidadeTotal,quantidadeDisponivel,avaliacao,musicas,duracao);
 		this.itens.add(novoItem);
+	}
+	public void criarCd(){
+		System.out.println("Insira o Titulo");
+		String tituloItem = scan.next();
+		System.out.println("Insira o Autor");
+		String autorItem = scan.next();
+		String tipoItem = "Cd";
+		System.out.println("Insira o Ano Publicado");
+		String anoItem = scan.next();
+		System.out.println("Insira o Quantidade Total");
+		int quantTotalItem = scan.nextInt();
+		System.out.println("Insira a Avaliacao");
+		int avaliacaoItem = scan.nextInt();
+		System.out.println("Insira Quantas Musicas");
+		int quantMusicasItem = scan.nextInt();
+		System.out.println("Insira a Duracao do CD?");
+		int duracaoItem = scan.nextInt();
+		adicionarCd(tituloItem, autorItem, tipoItem, anoItem, quantTotalItem, quantTotalItem, avaliacaoItem, quantMusicasItem, duracaoItem);
 	}
 	public void adicionarLivro (String titulo, String autor, String tipo, String anoPublicado, int quantidadeTotal,
 			int quantidadeDisponivel, int avaliacao, String genero, String sinopse) {
 		Item novoItem = new Livro(titulo, autor,tipo,anoPublicado,quantidadeTotal,quantidadeDisponivel,avaliacao,genero,sinopse);
 		this.itens.add(novoItem);
+	}
+	public void criarLivro() {
+		System.out.println("Insira o Titulo");
+		String tituloItem = scan.next();
+		System.out.println("Insira o Autor");
+		String autorItem = scan.next();
+		String tipoItem = "Livro";
+		System.out.println("Insira o Ano Publicado");
+		String anoItem = scan.next();
+		System.out.println("Insira o Quantidade Total");
+		int quantTotalItem = scan.nextInt();
+		int quantDispItem = quantTotalItem;
+		System.out.println("Insira a Avaliacao");
+		int avaliacaoItem = scan.nextInt();
+		System.out.println("Insira a Sinopse do Livro?");
+		String sinopseItem = scan.next();
+		System.out.println("Insira o Genero");
+		String generoItem = scan.next();
+		adicionarLivro(tituloItem, autorItem, tipoItem, anoItem, quantTotalItem, quantDispItem, avaliacaoItem, generoItem, sinopseItem);
+	}
+	public void criarItem() {
+		int key = 0;
+		while (key!=2) {
+			System.out.println("Voce gostaria de adicionar um novo item?");
+			System.out.println("1) Sim");
+			System.out.println("2) Nao");
+			key = scan.nextInt();
+			switch (key) {
+			case 1:
+				System.out.println("Qual o tipo de item?");
+				System.out.println("1) Cd");
+				System.out.println("2) Dvd");
+				System.out.println("3) Livro");
+				System.out.println("4) Revista");
+				System.out.println("5) Tese");
+				
+				key = scan.nextInt();
+				switch (key) {
+				case 1:
+					criarCd();
+					break;
+				case 2:
+					criarDvd();
+					break;
+				case 3:
+					criarLivro();
+					break;
+				case 4:
+					criarRevista();
+					break;
+				case 5:
+					criarTese();
+					break;
+				default:
+					break;
+				}
+				}
+		}
 	}
 	public void listarItens() {
 		System.out.println("Voce gostaria de resumir as informacoes do catalogo?");
