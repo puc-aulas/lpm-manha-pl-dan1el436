@@ -20,7 +20,7 @@ public class Main{
 		biblioteca.adicionarTese("Java","Felipe","Tese","2023",3,3,5,"Tecnologia","Como Java se matem no mercado a Tantos anos");
 		
 		String[] musicas = new String[5];
-		biblioteca.adicionarCd("Ao Vivo Em Goiania","Jorge e Matheus","Cd","2023",3,3,5,musicas,15);
+		biblioteca.adicionarCd("Ao Vivo Em Goiania","Jorge e Matheus","Cd","2003",3,3,5,musicas,15);
 		biblioteca.adicionarCd("A ultima dose de amor","Felipe","Cd","2023",3,3,5,musicas,15);
 		biblioteca.adicionarCd("Esquenta Sertanejo","Spotfy","Cd","2023",3,3,5,musicas,15);
 		
@@ -38,7 +38,7 @@ public class Main{
 		System.out.println("-----------------------");
 		System.out.println("Bem Vindo a biblioteca!");
 		System.out.println("-----------------------");
-		while (key != 4) {
+		while (key != 3) {
 			System.out.println("Menu: ");
 			System.out.println("1) Lista de Clientes");
 			System.out.println("2) Catalogo");

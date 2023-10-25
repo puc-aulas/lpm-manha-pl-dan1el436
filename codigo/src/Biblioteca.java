@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Biblioteca {
@@ -63,7 +64,7 @@ public class Biblioteca {
 		this.itens.add(novoItem);
 	}
 	public void listarItens() {
-		System.out.println("Voce gostaria de filtrar o catalogo?");
+		System.out.println("Voce gostaria de resumir as informacoes do catalogo?");
 		System.out.println("1) Sim");
 		System.out.println("2) Nao");
 		int key = scan.nextInt();
@@ -73,6 +74,7 @@ public class Biblioteca {
 			System.out.println("1) Titulo");
 			System.out.println("2) Autor");
 			System.out.println("3) Ano");
+			key = scan.nextInt();
 			switch (key) {
 			case 1:
 				System.out.println("Itens:");
@@ -100,12 +102,66 @@ public class Biblioteca {
 			}
 			break;
 		case 2:
-			System.out.println("Itens:");
-			for (int i = 0;i<this.itens.size();i++) {
-				System.out.println(i+1 +": "+ this.itens.get(i).getTitulo()+", "+ this.itens.get(i).getAutor()+", "+ this.itens.get(i).getTipo()+", " + this.itens.get(i).getAnoPublicado()+", Avaliacao("+this.itens.get(i).getAvaliacao()+")");
+			System.out.println("Voce gostaria de filtrar ou organizar o catalogo?");
+			System.out.println("1) Sim");
+			System.out.println("2) Nao");
+			key = scan.nextInt();
+			switch (key) {
+			case 1:
+				System.out.println("Como?");
+				System.out.println("1) Alfabetica");
+				System.out.println("2) Autor");
+				System.out.println("3) Ano");
+				key = scan.nextInt();
+				switch (key) {
+				case 1:
+					System.out.println("Itens:");
+					String[] ordemAlfabetica = new String[itens.size()];
+					
+					for (int i = 0;i<this.itens.size();i++) {
+						ordemAlfabetica[i] = this.itens.get(i).getTitulo();
+					}
+					Arrays.sort(ordemAlfabetica);
+					for (int i = 0;i<this.itens.size();i++) {
+						System.out.println(i+1 +": "+ ordemAlfabetica[i]);
+					}
+					System.out.println("-----------------------");
+					break;
+				case 2:
+					System.out.println("Qual o nome do autor?");
+					String nomeAutor = scan.next();
+					System.out.println("Itens:");
+					for (int i = 0;i<this.itens.size();i++) {
+						if(nomeAutor.equals(this.itens.get(i).getAutor())) {
+							System.out.println(i+1 +": "+ this.itens.get(i).getTitulo()+", "+ this.itens.get(i).getAutor()+", "+ this.itens.get(i).getTipo()+", " + this.itens.get(i).getAnoPublicado()+", Avaliacao("+this.itens.get(i).getAvaliacao()+")");
+						}
+					}
+					System.out.println("-----------------------");
+					break;
+				case 3:
+					System.out.println("Qual o Ano Publicado?");
+					String data = scan.next();
+					System.out.println("Itens:");
+					for (int i = 0;i<this.itens.size();i++) {
+						if(data.equals(this.itens.get(i).getAnoPublicado())) {
+							System.out.println(i+1 +": "+ this.itens.get(i).getTitulo()+", "+ this.itens.get(i).getAutor()+", "+ this.itens.get(i).getTipo()+", " + this.itens.get(i).getAnoPublicado()+", Avaliacao("+this.itens.get(i).getAvaliacao()+")");
+					}
+					}
+					System.out.println("-----------------------");
+					break;
+				default:
+					break;
+				}
+				break;
+
+			default:
+				System.out.println("Itens:");
+				for (int i = 0;i<this.itens.size();i++) {
+					System.out.println(i+1 +": "+ this.itens.get(i).getTitulo()+", "+ this.itens.get(i).getAutor()+", "+ this.itens.get(i).getTipo()+", " + this.itens.get(i).getAnoPublicado()+", Avaliacao("+this.itens.get(i).getAvaliacao()+")");
+				}
+				System.out.println("-----------------------");
+				break;
 			}
-			System.out.println("-----------------------");
-			break;
 		default:
 			break;
 		}
