@@ -324,6 +324,7 @@ public class Biblioteca {
 				System.out.println("2) Autor");
 				System.out.println("3) Ano");
 				System.out.println("4) Tipo");
+				System.out.println("5) Titulo");
 				key = scan.nextInt();
 				switch (key) {
 				case 1:
@@ -341,10 +342,12 @@ public class Biblioteca {
 					break;
 				case 2:
 					System.out.println("Qual o nome do autor?");
-					String nomeAutor = scan.next();
+					String nomeAutorScan = scan.next().toLowerCase();
+					String nomeAutorItem = "";
 					System.out.println("Itens:");
 					for (int i = 0;i<this.itens.size();i++) {
-						if(nomeAutor.equals(this.itens.get(i).getAutor())) {
+						nomeAutorItem = this.itens.get(i).getAutor().toLowerCase();
+						if(nomeAutorItem.contains(nomeAutorScan)) {
 							System.out.println(i+1 +": "+ this.itens.get(i).getTitulo()+", "+ this.itens.get(i).getAutor()+", "+ this.itens.get(i).getTipo()+", " + this.itens.get(i).getAnoPublicado()+", Avaliacao("+this.itens.get(i).getAvaliacao()+")");
 						}
 					}
@@ -355,9 +358,22 @@ public class Biblioteca {
 					String data = scan.next();
 					System.out.println("Itens:");
 					for (int i = 0;i<this.itens.size();i++) {
-						if(data.equals(this.itens.get(i).getAnoPublicado())) {
+						if(this.itens.get(i).getAnoPublicado().contains(data)) {
 							System.out.println(i+1 +": "+ this.itens.get(i).getTitulo()+", "+ this.itens.get(i).getAutor()+", "+ this.itens.get(i).getTipo()+", " + this.itens.get(i).getAnoPublicado()+", Avaliacao("+this.itens.get(i).getAvaliacao()+")");
 					}
+					}
+					System.out.println("-----------------------");
+					break;
+				case 5:
+					System.out.println("Qual o nome do autor?");
+					String tituloScan = scan.next().toLowerCase();
+					String tituloItem = "";
+					System.out.println("Itens:");
+					for (int i = 0;i<this.itens.size();i++) {
+						tituloItem = this.itens.get(i).getTitulo().toLowerCase();
+						if(tituloItem.contains(tituloScan)) {
+							System.out.println(i+1 +": "+ this.itens.get(i).getTitulo()+", "+ this.itens.get(i).getAutor()+", "+ this.itens.get(i).getTipo()+", " + this.itens.get(i).getAnoPublicado()+", Avaliacao("+this.itens.get(i).getAvaliacao()+")");
+						}
 					}
 					System.out.println("-----------------------");
 					break;
@@ -488,9 +504,10 @@ public class Biblioteca {
 					switch (key) {
 					case 1:
 						System.out.println("Insira o nome:");
-						String nome = scan.next();
+						String nome = scan.next().toLowerCase();
 						for (int i = 0; i < alugueis.size(); i++) {
-							if(alugueis.get(i).getUsuario().getNome().equals(nome)) {
+							String nomeUsuario = alugueis.get(i).getUsuario().getNome().toLowerCase();
+							if(nomeUsuario.contains(nome)) {
 							System.out.println(i+1 + ") Usuario: "+alugueis.get(i).getUsuario().getNome()+" Item: "+ alugueis.get(i).getItem().getTitulo()+" Data: " + alugueis.get(i).getData());
 							}
 						}
@@ -498,9 +515,10 @@ public class Biblioteca {
 
 					case 2:
 						System.out.println("Insira o Item:");
-						String item = scan.next();
+						String item = scan.next().toLowerCase();
 						for (int i = 0; i < alugueis.size(); i++) {
-							if(alugueis.get(i).getItem().getTitulo().equals(item)) {
+							String nomeItem = alugueis.get(i).getItem().getTitulo().toLowerCase();
+							if(nomeItem.contains(item)) {
 							System.out.println(i+1 + ") Usuario: "+alugueis.get(i).getUsuario().getNome()+" Item: "+ alugueis.get(i).getItem().getTitulo()+" Data: " + alugueis.get(i).getData());
 							}
 						}
@@ -510,7 +528,7 @@ public class Biblioteca {
 						System.out.println("Insira a Data:");
 						String data = scan.next();
 						for (int i = 0; i < alugueis.size(); i++) {
-							if(alugueis.get(i).getData().equals(data)) {
+							if(alugueis.get(i).getData().contains(data)) {
 							System.out.println(i+1 + ") Usuario: "+alugueis.get(i).getUsuario().getNome()+" Item: "+ alugueis.get(i).getItem().getTitulo()+" Data: " + alugueis.get(i).getData());
 							}
 						}
