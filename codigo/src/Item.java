@@ -1,5 +1,5 @@
 
-public abstract class Item {
+public abstract class Item implements Comparable<Item>{
 	private String titulo;
 	private String autor;
 	private String tipo;
@@ -75,6 +75,9 @@ public abstract class Item {
 		this.avaliacao = avaliacao;
 	}
 
-
+    @Override
+    public int compareTo(Item outroItem) {
+        return this.titulo.compareTo(outroItem.getTitulo());
+    }
 
 }

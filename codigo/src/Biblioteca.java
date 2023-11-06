@@ -1,7 +1,7 @@
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.Scanner;
 
 public class Biblioteca {
@@ -41,7 +41,6 @@ public class Biblioteca {
 	public void setItensAlugaveis(ArrayList<Item> itensAlugaveis) {
 		this.itensAlugaveis = itensAlugaveis;
 	}
-	
 	public void adicionarUsuario (String nome, String cpf) {
 		Usuario novoUsuario = new Usuario(nome, cpf);
 		this.usuarios.add(novoUsuario);
@@ -275,10 +274,19 @@ public class Biblioteca {
 			}
 	}
 	public void listarItens() {
-		System.out.println("Voce gostaria de resumir as informacoes do catalogo?");
+		System.out.println("Voce gostaria de organizar o catalogo em ordem alfabetica?");
 		System.out.println("1) Sim");
 		System.out.println("2) Nao");
 		int key = scan.nextInt();
+		if(key == 1) {
+			Collections.sort(itens);
+		}else {
+			Collections.shuffle(itens);
+		}
+		System.out.println("Voce gostaria de resumir as informacoes do catalogo?");
+		System.out.println("1) Sim");
+		System.out.println("2) Nao");
+		key = scan.nextInt();
 		switch (key) {
 		case 1:
 			System.out.println("Como?");
@@ -313,34 +321,20 @@ public class Biblioteca {
 			}
 			break;
 		case 2:
-			System.out.println("Voce gostaria de filtrar ou organizar o catalogo?");
+			System.out.println("Voce gostaria de filtrar o catalogo?");
 			System.out.println("1) Sim");
 			System.out.println("2) Nao");
 			key = scan.nextInt();
 			switch (key) {
 			case 1:
 				System.out.println("Como?");
-				System.out.println("1) Alfabetica");
-				System.out.println("2) Autor");
-				System.out.println("3) Ano");
-				System.out.println("4) Tipo");
-				System.out.println("5) Titulo");
+				System.out.println("1) Autor");
+				System.out.println("2) Ano");
+				System.out.println("3) Tipo");
+				System.out.println("4) Titulo");
 				key = scan.nextInt();
 				switch (key) {
 				case 1:
-					System.out.println("Itens:");
-					String[] ordemAlfabetica = new String[itens.size()];
-					
-					for (int i = 0;i<this.itens.size();i++) {
-						ordemAlfabetica[i] = this.itens.get(i).getTitulo();
-					}
-					Arrays.sort(ordemAlfabetica);
-					for (int i = 0;i<this.itens.size();i++) {
-						System.out.println(i+1 +": "+ ordemAlfabetica[i]);
-					}
-					System.out.println("-----------------------");
-					break;
-				case 2:
 					System.out.println("Qual o nome do autor?");
 					String nomeAutorScan = scan.next().toLowerCase();
 					String nomeAutorItem = "";
@@ -353,7 +347,7 @@ public class Biblioteca {
 					}
 					System.out.println("-----------------------");
 					break;
-				case 3:
+				case 2:
 					System.out.println("Qual o Ano Publicado?");
 					String data = scan.next();
 					System.out.println("Itens:");
@@ -364,8 +358,8 @@ public class Biblioteca {
 					}
 					System.out.println("-----------------------");
 					break;
-				case 5:
-					System.out.println("Qual o nome do autor?");
+				case 3:
+					System.out.println("Qual o Titulo?");
 					String tituloScan = scan.next().toLowerCase();
 					String tituloItem = "";
 					System.out.println("Itens:");
