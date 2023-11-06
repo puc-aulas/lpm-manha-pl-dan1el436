@@ -330,8 +330,8 @@ public class Biblioteca {
 				System.out.println("Como?");
 				System.out.println("1) Autor");
 				System.out.println("2) Ano");
-				System.out.println("3) Tipo");
-				System.out.println("4) Titulo");
+				System.out.println("3) Titulo");
+				System.out.println("4) Tipo");
 				key = scan.nextInt();
 				switch (key) {
 				case 1:
