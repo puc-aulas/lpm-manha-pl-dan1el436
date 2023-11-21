@@ -274,167 +274,181 @@ public class Biblioteca {
 			}
 	}
 	public void listarItens() {
-		System.out.println("Voce gostaria de organizar o catalogo em ordem alfabetica?");
-		System.out.println("1) Sim");
-		System.out.println("2) Nao");
+		System.out.println("Como voce gostaria de ver o catalogo?");
+		System.out.println("1) Recomendados(Melhor Avaliacao)");
+		System.out.println("2) Todos os itens");
 		int key = scan.nextInt();
-		if(key == 1) {
-			Collections.sort(itens);
-		}else {
-			Collections.shuffle(itens);
-		}
-		System.out.println("Voce gostaria de resumir as informacoes do catalogo?");
-		System.out.println("1) Sim");
-		System.out.println("2) Nao");
-		key = scan.nextInt();
 		switch (key) {
 		case 1:
-			System.out.println("Como?");
-			System.out.println("1) Titulo");
-			System.out.println("2) Autor");
-			System.out.println("3) Ano");
-			key = scan.nextInt();
-			switch (key) {
-			case 1:
-				System.out.println("Itens:");
-				for (int i = 0;i<this.itens.size();i++) {
-					System.out.println(i+1 +": "+ this.itens.get(i).getTitulo());
+			System.out.println("Itens Recomendados:");
+			for(int i=0;i<this.itens.size();i++) {
+				if(itens.get(i).getAvaliacao()>=4) {
+					System.out.println(i+1 +": "+ this.itens.get(i).getTitulo()+", "+ this.itens.get(i).getAutor()+", "+ this.itens.get(i).getTipo()+", " + this.itens.get(i).getAnoPublicado()+", Avaliacao("+this.itens.get(i).getAvaliacao()+")");
 				}
-				System.out.println("-----------------------");
-				break;
-			case 2:
-				System.out.println("Itens:");
-				for (int i = 0;i<this.itens.size();i++) {
-					System.out.println(i+1 +": "+ this.itens.get(i).getAutor());
-				}
-				System.out.println("-----------------------");
-				break;
-			case 3:
-				System.out.println("Itens:");
-				for (int i = 0;i<this.itens.size();i++) {
-					System.out.println(i+1 +": "+ this.itens.get(i).getAnoPublicado());
-				}
-				System.out.println("-----------------------");
-				break;
-			default:
-				break;
 			}
-			break;
+		break;
 		case 2:
-			System.out.println("Voce gostaria de filtrar o catalogo?");
+			System.out.println("Voce gostaria de organizar o catalogo em ordem alfabetica?");
+			System.out.println("1) Sim");
+			System.out.println("2) Nao");
+			key = scan.nextInt();
+			if(key == 1) {
+				Collections.sort(itens);
+			}else {
+				Collections.shuffle(itens);
+			}
+			System.out.println("Voce gostaria de resumir as informacoes do catalogo?");
 			System.out.println("1) Sim");
 			System.out.println("2) Nao");
 			key = scan.nextInt();
 			switch (key) {
 			case 1:
 				System.out.println("Como?");
-				System.out.println("1) Autor");
-				System.out.println("2) Ano");
-				System.out.println("3) Titulo");
-				System.out.println("4) Tipo");
+				System.out.println("1) Titulo");
+				System.out.println("2) Autor");
+				System.out.println("3) Ano");
 				key = scan.nextInt();
 				switch (key) {
 				case 1:
-					System.out.println("Qual o nome do autor?");
-					String nomeAutorScan = scan.next().toLowerCase();
-					String nomeAutorItem = "";
 					System.out.println("Itens:");
 					for (int i = 0;i<this.itens.size();i++) {
-						nomeAutorItem = this.itens.get(i).getAutor().toLowerCase();
-						if(nomeAutorItem.contains(nomeAutorScan)) {
-							System.out.println(i+1 +": "+ this.itens.get(i).getTitulo()+", "+ this.itens.get(i).getAutor()+", "+ this.itens.get(i).getTipo()+", " + this.itens.get(i).getAnoPublicado()+", Avaliacao("+this.itens.get(i).getAvaliacao()+")");
-						}
+						System.out.println(i+1 +": "+ this.itens.get(i).getTitulo());
 					}
 					System.out.println("-----------------------");
 					break;
 				case 2:
-					System.out.println("Qual o Ano Publicado?");
-					String data = scan.next();
 					System.out.println("Itens:");
 					for (int i = 0;i<this.itens.size();i++) {
-						if(this.itens.get(i).getAnoPublicado().contains(data)) {
-							System.out.println(i+1 +": "+ this.itens.get(i).getTitulo()+", "+ this.itens.get(i).getAutor()+", "+ this.itens.get(i).getTipo()+", " + this.itens.get(i).getAnoPublicado()+", Avaliacao("+this.itens.get(i).getAvaliacao()+")");
-					}
+						System.out.println(i+1 +": "+ this.itens.get(i).getAutor());
 					}
 					System.out.println("-----------------------");
 					break;
 				case 3:
-					System.out.println("Qual o Titulo?");
-					String tituloScan = scan.next().toLowerCase();
-					String tituloItem = "";
 					System.out.println("Itens:");
 					for (int i = 0;i<this.itens.size();i++) {
-						tituloItem = this.itens.get(i).getTitulo().toLowerCase();
-						if(tituloItem.contains(tituloScan)) {
-							System.out.println(i+1 +": "+ this.itens.get(i).getTitulo()+", "+ this.itens.get(i).getAutor()+", "+ this.itens.get(i).getTipo()+", " + this.itens.get(i).getAnoPublicado()+", Avaliacao("+this.itens.get(i).getAvaliacao()+")");
-						}
+						System.out.println(i+1 +": "+ this.itens.get(i).getAnoPublicado());
 					}
 					System.out.println("-----------------------");
 					break;
 				default:
-					System.out.println("Qual o tipo de item?");
-					System.out.println("1) Cd");
-					System.out.println("2) Dvd");
-					System.out.println("3) Livro");
-					System.out.println("4) Revista");
-					System.out.println("5) Tese");
-					
-					key = scan.nextInt();
-					switch (key) {
-					case 1:
-						for (int i = 0;i<this.itens.size();i++) {
-							if(this.itens.get(i).getTipo().equals("Cd")) {
-								System.out.println(i+1 +": "+ this.itens.get(i).getTitulo()+", "+ this.itens.get(i).getAutor()+", "+ this.itens.get(i).getTipo()+", " + this.itens.get(i).getAnoPublicado()+", Avaliacao("+this.itens.get(i).getAvaliacao()+")");
-							}
-						}
-						break;
-					case 2:
-						for (int i = 0;i<this.itens.size();i++) {
-							if(this.itens.get(i).getTipo().equals("Dvd")) {
-								System.out.println(i+1 +": "+ this.itens.get(i).getTitulo()+", "+ this.itens.get(i).getAutor()+", "+ this.itens.get(i).getTipo()+", " + this.itens.get(i).getAnoPublicado()+", Avaliacao("+this.itens.get(i).getAvaliacao()+")");
-							}
-						}
-						break;
-					case 3:
-						for (int i = 0;i<this.itens.size();i++) {
-							if(this.itens.get(i).getTipo().equals("Livro")) {
-								System.out.println(i+1 +": "+ this.itens.get(i).getTitulo()+", "+ this.itens.get(i).getAutor()+", "+ this.itens.get(i).getTipo()+", " + this.itens.get(i).getAnoPublicado()+", Avaliacao("+this.itens.get(i).getAvaliacao()+")");
-							}
-						}
-						break;
-					case 4:
-						for (int i = 0;i<this.itens.size();i++) {
-							if(this.itens.get(i).getTipo().equals("Revista")) {
-								System.out.println(i+1 +": "+ this.itens.get(i).getTitulo()+", "+ this.itens.get(i).getAutor()+", "+ this.itens.get(i).getTipo()+", " + this.itens.get(i).getAnoPublicado()+", Avaliacao("+this.itens.get(i).getAvaliacao()+")");
-							}
-						}
-						break;
-					case 5:
-						for (int i = 0;i<this.itens.size();i++) {
-							if(this.itens.get(i).getTipo().equals("Tese")) {
-								System.out.println(i+1 +": "+ this.itens.get(i).getTitulo()+", "+ this.itens.get(i).getAutor()+", "+ this.itens.get(i).getTipo()+", " + this.itens.get(i).getAnoPublicado()+", Avaliacao("+this.itens.get(i).getAvaliacao()+")");
-							}
-						}
-						break;
-					default:
-						break;
-					}
 					break;
 				}
 				break;
+			case 2:
+				System.out.println("Voce gostaria de filtrar o catalogo?");
+				System.out.println("1) Sim");
+				System.out.println("2) Nao");
+				key = scan.nextInt();
+				switch (key) {
+				case 1:
+					System.out.println("Como?");
+					System.out.println("1) Autor");
+					System.out.println("2) Ano");
+					System.out.println("3) Titulo");
+					System.out.println("4) Tipo");
+					key = scan.nextInt();
+					switch (key) {
+					case 1:
+						System.out.println("Qual o nome do autor?");
+						String nomeAutorScan = scan.next().toLowerCase();
+						String nomeAutorItem = "";
+						System.out.println("Itens:");
+						for (int i = 0;i<this.itens.size();i++) {
+							nomeAutorItem = this.itens.get(i).getAutor().toLowerCase();
+							if(nomeAutorItem.contains(nomeAutorScan)) {
+								System.out.println(i+1 +": "+ this.itens.get(i).getTitulo()+", "+ this.itens.get(i).getAutor()+", "+ this.itens.get(i).getTipo()+", " + this.itens.get(i).getAnoPublicado()+", Avaliacao("+this.itens.get(i).getAvaliacao()+")");
+							}
+						}
+						System.out.println("-----------------------");
+						break;
+					case 2:
+						System.out.println("Qual o Ano Publicado?");
+						String data = scan.next();
+						System.out.println("Itens:");
+						for (int i = 0;i<this.itens.size();i++) {
+							if(this.itens.get(i).getAnoPublicado().contains(data)) {
+								System.out.println(i+1 +": "+ this.itens.get(i).getTitulo()+", "+ this.itens.get(i).getAutor()+", "+ this.itens.get(i).getTipo()+", " + this.itens.get(i).getAnoPublicado()+", Avaliacao("+this.itens.get(i).getAvaliacao()+")");
+						}
+						}
+						System.out.println("-----------------------");
+						break;
+					case 3:
+						System.out.println("Qual o Titulo?");
+						String tituloScan = scan.next().toLowerCase();
+						String tituloItem = "";
+						System.out.println("Itens:");
+						for (int i = 0;i<this.itens.size();i++) {
+							tituloItem = this.itens.get(i).getTitulo().toLowerCase();
+							if(tituloItem.contains(tituloScan)) {
+								System.out.println(i+1 +": "+ this.itens.get(i).getTitulo()+", "+ this.itens.get(i).getAutor()+", "+ this.itens.get(i).getTipo()+", " + this.itens.get(i).getAnoPublicado()+", Avaliacao("+this.itens.get(i).getAvaliacao()+")");
+							}
+						}
+						System.out.println("-----------------------");
+						break;
+					default:
+						System.out.println("Qual o tipo de item?");
+						System.out.println("1) Cd");
+						System.out.println("2) Dvd");
+						System.out.println("3) Livro");
+						System.out.println("4) Revista");
+						System.out.println("5) Tese");
+						
+						key = scan.nextInt();
+						switch (key) {
+						case 1:
+							for (int i = 0;i<this.itens.size();i++) {
+								if(this.itens.get(i).getTipo().equals("Cd")) {
+									System.out.println(i+1 +": "+ this.itens.get(i).getTitulo()+", "+ this.itens.get(i).getAutor()+", "+ this.itens.get(i).getTipo()+", " + this.itens.get(i).getAnoPublicado()+", Avaliacao("+this.itens.get(i).getAvaliacao()+")");
+								}
+							}
+							break;
+						case 2:
+							for (int i = 0;i<this.itens.size();i++) {
+								if(this.itens.get(i).getTipo().equals("Dvd")) {
+									System.out.println(i+1 +": "+ this.itens.get(i).getTitulo()+", "+ this.itens.get(i).getAutor()+", "+ this.itens.get(i).getTipo()+", " + this.itens.get(i).getAnoPublicado()+", Avaliacao("+this.itens.get(i).getAvaliacao()+")");
+								}
+							}
+							break;
+						case 3:
+							for (int i = 0;i<this.itens.size();i++) {
+								if(this.itens.get(i).getTipo().equals("Livro")) {
+									System.out.println(i+1 +": "+ this.itens.get(i).getTitulo()+", "+ this.itens.get(i).getAutor()+", "+ this.itens.get(i).getTipo()+", " + this.itens.get(i).getAnoPublicado()+", Avaliacao("+this.itens.get(i).getAvaliacao()+")");
+								}
+							}
+							break;
+						case 4:
+							for (int i = 0;i<this.itens.size();i++) {
+								if(this.itens.get(i).getTipo().equals("Revista")) {
+									System.out.println(i+1 +": "+ this.itens.get(i).getTitulo()+", "+ this.itens.get(i).getAutor()+", "+ this.itens.get(i).getTipo()+", " + this.itens.get(i).getAnoPublicado()+", Avaliacao("+this.itens.get(i).getAvaliacao()+")");
+								}
+							}
+							break;
+						case 5:
+							for (int i = 0;i<this.itens.size();i++) {
+								if(this.itens.get(i).getTipo().equals("Tese")) {
+									System.out.println(i+1 +": "+ this.itens.get(i).getTitulo()+", "+ this.itens.get(i).getAutor()+", "+ this.itens.get(i).getTipo()+", " + this.itens.get(i).getAnoPublicado()+", Avaliacao("+this.itens.get(i).getAvaliacao()+")");
+								}
+							}
+							break;
+						default:
+							break;
+						}
+						break;
+					}
+					break;
 
-			default:
-				System.out.println("Itens:");
-				for (int i = 0;i<this.itens.size();i++) {
-					System.out.println(i+1 +": "+ this.itens.get(i).getTitulo()+", "+ this.itens.get(i).getAutor()+", "+ this.itens.get(i).getTipo()+", " + this.itens.get(i).getAnoPublicado()+", Avaliacao("+this.itens.get(i).getAvaliacao()+")");
+				default:
+					System.out.println("Itens:");
+					for (int i = 0;i<this.itens.size();i++) {
+						System.out.println(i+1 +": "+ this.itens.get(i).getTitulo()+", "+ this.itens.get(i).getAutor()+", "+ this.itens.get(i).getTipo()+", " + this.itens.get(i).getAnoPublicado()+", Avaliacao("+this.itens.get(i).getAvaliacao()+")");
+					}
+					System.out.println("-----------------------");
+					break;
 				}
-				System.out.println("-----------------------");
+			default:
 				break;
 			}
-		default:
-			break;
-		}
-
+			}
 	}
 	public void adicionarAluguel(Usuario usuario, Item item, String data) {
 		Aluguel aluguel = new Aluguel(usuario,item,data);
@@ -449,7 +463,7 @@ public class Biblioteca {
 		System.out.println("-----------------------");
 		key = scan.nextInt();
 		Usuario usuario = this.usuarios.get(key-1);
-		if(usuario.getNumAlugueis()<3) {
+		if(usuario.getNumAlugueis() < 3) {
 		System.out.println("Qual Item Gostaria de Alugar?");
 			for (int i = 0;i<this.itensAlugaveis.size();i++) {
 				System.out.println(i+1+": "+ this.itensAlugaveis.get(i).getTitulo());
@@ -457,6 +471,15 @@ public class Biblioteca {
 			System.out.println("-----------------------");
 			key = scan.nextInt();
 			Item item = this.itensAlugaveis.get(key-1);
+			boolean itemRepetido = false;
+			if(!this.alugueis.isEmpty()) {
+			for(int i = 0;i<this.alugueis.size();i++) {
+				if(this.alugueis.get(i).getItem()== item && this.alugueis.get(i).getUsuario()== usuario) {
+					itemRepetido=true;
+				}
+			}
+			}
+			if(itemRepetido==false) {
 			if(item.getQuantidadeDisponivel()>1) {
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");  
 		LocalDateTime now = LocalDateTime.now(); 
@@ -468,6 +491,9 @@ public class Biblioteca {
 		System.out.println(" Usuario: " +usuario.getNome()+" Item: "+ item.getTitulo()+" Data: " + data);
 		}else {
 			System.out.println("Este item ja realizou o maximo de alugueis!");
+		}
+		}else {
+			System.out.println("Este usuario ja realizou o aluguel deste item!");
 		}
 		}else {
 			System.out.println("Este usuario ja realizou o maximo de alugueis!");
