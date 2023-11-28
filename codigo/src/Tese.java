@@ -4,9 +4,9 @@ public class Tese extends Item{
 	private String sinopse;
 
 
-	public Tese(String titulo, String autor, String tipo, String anoPublicado, int quantidadeTotal,
-			int quantidadeDisponivel, int avaliacao, String assunto, String sinopse) {
-		super(titulo, autor, tipo, anoPublicado, quantidadeTotal, quantidadeDisponivel, avaliacao);
+	public Tese(String titulo, String autor, String tema, String tipo, String anoPublicado, int quantidadeTotal,
+			int quantidadeDisponivel, int avaliacao,String assunto, String sinopse) {
+		super(titulo, autor, tema, tipo, anoPublicado, quantidadeTotal, quantidadeDisponivel, avaliacao);
 		this.assunto = assunto;
 		this.sinopse = sinopse;
 	}

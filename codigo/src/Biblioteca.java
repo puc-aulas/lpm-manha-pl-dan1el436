@@ -1,22 +1,34 @@
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
+import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
 
 public class Biblioteca {
+	private static Biblioteca instance;
 	private ArrayList <Usuario> usuarios;
 	private ArrayList <Item> itens;
 	private ArrayList <Item> itensAlugaveis;
 	private ArrayList <Aluguel> alugueis;
 	Scanner scan = new Scanner(System.in);
 	
-	public Biblioteca() {
+	private Biblioteca() {
 		this.usuarios = new ArrayList<Usuario>();
 		this.itens = new ArrayList<Item>();
 		this.alugueis = new ArrayList<Aluguel>();
 		this.itensAlugaveis = new ArrayList<Item>();
 		}
+    public static Biblioteca getInstance() {
+        
+        if (instance == null) {
+            instance = new Biblioteca();
+        }
+
+        return instance;
+    }
 	public ArrayList<Usuario> getUsuarios() {
 		return usuarios;
 	}
@@ -41,8 +53,8 @@ public class Biblioteca {
 	public void setItensAlugaveis(ArrayList<Item> itensAlugaveis) {
 		this.itensAlugaveis = itensAlugaveis;
 	}
-	public void adicionarUsuario (String nome, String cpf) {
-		Usuario novoUsuario = new Usuario(nome, cpf);
+	public void adicionarUsuario (String nome, String cpf, String curso, List<String> categoriasDeInteresse) {
+		Usuario novoUsuario = new Usuario(nome, cpf,curso,categoriasDeInteresse);
 		this.usuarios.add(novoUsuario);
 	}
 	public void criarUsuario() {
@@ -58,7 +70,10 @@ public class Biblioteca {
 				String nome = scan.next();
 				System.out.println("Insira o cpf");
 				String cpf = scan.next();
-				adicionarUsuario(nome, cpf);
+				System.out.println("Insira o Curso");
+				String curso = scan.next();
+				List<String> categoriasDeInteresse = Arrays.asList("Terror", "Sertanejo", "Fantasia");
+				adicionarUsuario(nome, cpf, curso,categoriasDeInteresse);
 				break;
 
 			default:
@@ -94,9 +109,9 @@ public class Biblioteca {
 		System.out.println("-----------------------");
 	}
 	
-	public void adicionarRevista (String titulo, String autor, String tipo, String anoPublicado, int quantidadeTotal, int quantidadeDisponivel,
+	public void adicionarRevista (String titulo, String autor, String tema, String tipo, String anoPublicado, int quantidadeTotal, int quantidadeDisponivel,
 			int avaliacao, int materias) {
-		Item novoItem = new Revista(titulo, autor,tipo,anoPublicado,quantidadeTotal,quantidadeDisponivel,avaliacao,materias);
+		Item novoItem = new Revista(titulo, autor,tema,tipo,anoPublicado,quantidadeTotal,quantidadeDisponivel,avaliacao,materias);
 		this.itens.add(novoItem);
 	}
 	public void criarRevista() {
@@ -104,6 +119,8 @@ public class Biblioteca {
 		String tituloItem = scan.next();
 		System.out.println("Insira o Autor");
 		String autorItem = scan.next();
+		System.out.println("Insira o Tema");
+		String temaItem = scan.next();
 		String tipoItem = "Revista";
 		System.out.println("Insira o Ano Publicado");
 		String anoItem = scan.next();
@@ -114,11 +131,11 @@ public class Biblioteca {
 		int avaliacaoItem = scan.nextInt();
 		System.out.println("Insira a Quantidade de Materias");
 		int quantMateriasItem = scan.nextInt();
-		adicionarRevista(tituloItem, autorItem, tipoItem, anoItem, quantTotalItem, quantDispItem, avaliacaoItem, quantMateriasItem);
+		adicionarRevista(tituloItem, autorItem,temaItem, tipoItem, anoItem, quantTotalItem, quantDispItem, avaliacaoItem, quantMateriasItem);
 	}
-	public void adicionarTese (String titulo, String autor, String tipo, String anoPublicado, int quantidadeTotal,
+	public void adicionarTese (String titulo, String autor, String tema, String tipo, String anoPublicado, int quantidadeTotal,
 			int quantidadeDisponivel, int avaliacao, String assunto, String sinopse) {
-		Item novoItem = new Tese(titulo, autor,tipo,anoPublicado,quantidadeTotal,quantidadeDisponivel,avaliacao,assunto,sinopse);
+		Item novoItem = new Tese(titulo, autor,tema,tipo,anoPublicado,quantidadeTotal,quantidadeDisponivel,avaliacao,assunto,sinopse);
 		this.itens.add(novoItem);
 	}
 	public void criarTese() {
@@ -126,6 +143,8 @@ public class Biblioteca {
 		String tituloItem = scan.next();
 		System.out.println("Insira o Autor");
 		String autorItem = scan.next();
+		System.out.println("Insira o Tema");
+		String temaItem = scan.next();
 		String tipoItem = "Tese";
 		System.out.println("Insira o Ano Publicado");
 		String anoItem = scan.next();
@@ -138,11 +157,11 @@ public class Biblioteca {
 		String sinopseItem = scan.next();
 		System.out.println("Insira o Assunto");
 		String assuntoItem = scan.next();
-		adicionarTese(tituloItem, autorItem, tipoItem, anoItem, quantTotalItem, quantDispItem, avaliacaoItem, assuntoItem, sinopseItem);
+		adicionarTese(tituloItem, autorItem,temaItem, tipoItem, anoItem, quantTotalItem, quantDispItem, avaliacaoItem, assuntoItem, sinopseItem);
 	}
-	public void adicionarDvd (String titulo, String autor, String tipo, String anoPublicado, int quantidadeTotal,
+	public void adicionarDvd (String titulo, String autor, String tema, String tipo, String anoPublicado, int quantidadeTotal,
 			int quantidadeDisponivel, int avaliacao, int duracao, String genero) {
-		Item novoItem = new Dvd(titulo, autor,tipo,anoPublicado,quantidadeTotal,quantidadeDisponivel,avaliacao,duracao,genero);
+		Item novoItem = new Dvd(titulo, autor,tema,tipo,anoPublicado,quantidadeTotal,quantidadeDisponivel,avaliacao,duracao,genero);
 		this.itens.add(novoItem);
 		this.itensAlugaveis.add(novoItem);
 	}
@@ -151,6 +170,8 @@ public class Biblioteca {
 		String tituloItem = scan.next();
 		System.out.println("Insira o Autor");
 		String autorItem = scan.next();
+		System.out.println("Insira o Tema");
+		String temaItem = scan.next();
 		String tipoItem = "Dvd";
 		System.out.println("Insira o Ano Publicado");
 		String anoItem = scan.next();
@@ -163,11 +184,11 @@ public class Biblioteca {
 		int duracaoItem = scan.nextInt();
 		System.out.println("Insira o Genero");
 		String generoItem = scan.next();
-		adicionarDvd(tituloItem, autorItem, tipoItem, anoItem, quantTotalItem, quantDispItem, avaliacaoItem, duracaoItem, generoItem);
+		adicionarDvd(tituloItem, autorItem,temaItem, tipoItem, anoItem, quantTotalItem, quantDispItem, avaliacaoItem, duracaoItem, generoItem);
 	}
-	public void adicionarCd (String titulo, String autor, String tipo, String anoPublicado, int quantidadeTotal,
+	public void adicionarCd (String titulo, String autor, String tema, String tipo, String anoPublicado, int quantidadeTotal,
 			int quantidadeDisponivel, int avaliacao, int musicas, int duracao) {
-		Item novoItem = new Cd(titulo, autor,tipo,anoPublicado,quantidadeTotal,quantidadeDisponivel,avaliacao,musicas,duracao);
+		Item novoItem = new Cd(titulo, autor,tema,tipo,anoPublicado, quantidadeTotal,quantidadeDisponivel,avaliacao,musicas,duracao);
 		this.itens.add(novoItem);
 		this.itensAlugaveis.add(novoItem);
 	}
@@ -176,6 +197,8 @@ public class Biblioteca {
 		String tituloItem = scan.next();
 		System.out.println("Insira o Autor");
 		String autorItem = scan.next();
+		System.out.println("Insira o Tema");
+		String temaItem = scan.next();
 		String tipoItem = "Cd";
 		System.out.println("Insira o Ano Publicado");
 		String anoItem = scan.next();
@@ -187,11 +210,11 @@ public class Biblioteca {
 		int quantMusicasItem = scan.nextInt();
 		System.out.println("Insira a Duracao do CD?");
 		int duracaoItem = scan.nextInt();
-		adicionarCd(tituloItem, autorItem, tipoItem, anoItem, quantTotalItem, quantTotalItem, avaliacaoItem, quantMusicasItem, duracaoItem);
+		adicionarCd(tituloItem, autorItem,temaItem, tipoItem, anoItem, quantTotalItem, quantTotalItem, avaliacaoItem, quantMusicasItem, duracaoItem);
 	}
-	public void adicionarLivro (String titulo, String autor, String tipo, String anoPublicado, int quantidadeTotal,
+	public void adicionarLivro (String titulo, String autor,String tema, String tipo, String anoPublicado, int quantidadeTotal,
 			int quantidadeDisponivel, int avaliacao, String genero, String sinopse) {
-		Item novoItem = new Livro(titulo, autor,tipo,anoPublicado,quantidadeTotal,quantidadeDisponivel,avaliacao,genero,sinopse);
+		Item novoItem = new Livro(titulo, autor, tema,tipo,anoPublicado,quantidadeTotal,quantidadeDisponivel,avaliacao,genero,sinopse);
 		this.itens.add(novoItem);
 		this.itensAlugaveis.add(novoItem);
 	}
@@ -200,6 +223,8 @@ public class Biblioteca {
 		String tituloItem = scan.next();
 		System.out.println("Insira o Autor");
 		String autorItem = scan.next();
+		System.out.println("Insira o Tema");
+		String temaItem = scan.next();
 		String tipoItem = "Livro";
 		System.out.println("Insira o Ano Publicado");
 		String anoItem = scan.next();
@@ -212,7 +237,7 @@ public class Biblioteca {
 		String sinopseItem = scan.next();
 		System.out.println("Insira o Genero");
 		String generoItem = scan.next();
-		adicionarLivro(tituloItem, autorItem, tipoItem, anoItem, quantTotalItem, quantDispItem, avaliacaoItem, generoItem, sinopseItem);
+		adicionarLivro(tituloItem, autorItem, temaItem, tipoItem, anoItem, quantTotalItem, quantDispItem, avaliacaoItem, generoItem, sinopseItem);
 	}
 	public void criarItem() {
 		int key = 0;
@@ -465,6 +490,15 @@ public class Biblioteca {
 		Usuario usuario = this.usuarios.get(key-1);
 		if(usuario.getNumAlugueis() < 3) {
 		System.out.println("Qual Item Gostaria de Alugar?");
+			SistemaRecomendacaoAdapter recomendacaoAdapter = new SistemaRecomendacaoAdapter();
+	        List<Item> itensRecomendados = recomendacaoAdapter.recomendarItens(usuario, Biblioteca.getInstance());
+	        
+	        System.out.println("Itens Recomendados:");
+	        for (Item item : itensRecomendados) {
+	            System.out.println(item.getTitulo());
+	        }
+	        System.out.println("-----------------------");
+	        System.out.println("Todos os Itens:");
 			for (int i = 0;i<this.itensAlugaveis.size();i++) {
 				System.out.println(i+1+": "+ this.itensAlugaveis.get(i).getTitulo());
 			}
@@ -486,6 +520,7 @@ public class Biblioteca {
 		String data = dtf.format(now);
 		adicionarAluguel(usuario, item, data);
 		usuario.setNumAlugueis(usuario.getNumAlugueis()+1);
+		usuario.adicionarItemAoHistorico(item);
 		item.setQuantidadeDisponivel(item.getQuantidadeDisponivel()-1);
 		System.out.println("Alugado com sucesso!");
 		System.out.println(" Usuario: " +usuario.getNome()+" Item: "+ item.getTitulo()+" Data: " + data);
@@ -500,73 +535,94 @@ public class Biblioteca {
 		}
 	}
 	public void listarAlugueis() {
-		int key = 0;
-		System.out.println("Voce Gostaria de Ver o Historico de Alugueis?");
-		System.out.println("1) Sim");
-		System.out.println("2) Nao");
-		key = scan.nextInt();
-		switch (key) {
-		case 1:
-			if(alugueis.isEmpty()) {
-				System.out.println("Nao Ha Alugueis!");
-			}else {
-				System.out.println("Voce Gostaria de Filtrar o Historico de Alugueis?");
-				System.out.println("1) Sim");
-				System.out.println("2) Nao");
-				key = scan.nextInt();
-				switch (key) {
-				case 1:
-					System.out.println("Como?");
-					System.out.println("1) Usuario");
-					System.out.println("2) Item");
-					System.out.println("3) Data");
-					key = scan.nextInt();
-					switch (key) {
-					case 1:
-						System.out.println("Insira o nome:");
-						String nome = scan.next().toLowerCase();
-						for (int i = 0; i < alugueis.size(); i++) {
-							String nomeUsuario = alugueis.get(i).getUsuario().getNome().toLowerCase();
-							if(nomeUsuario.contains(nome)) {
-							System.out.println(i+1 + ") Usuario: "+alugueis.get(i).getUsuario().getNome()+" Item: "+ alugueis.get(i).getItem().getTitulo()+" Data: " + alugueis.get(i).getData());
-							}
-						}
-						break;
+		try {
+            int key = 0;
+            System.out.println("Você Gostaria de Ver o Histórico de Alugueis?");
+            System.out.println("1) Sim");
+            System.out.println("2) Não");
+            key = scan.nextInt();
 
-					case 2:
-						System.out.println("Insira o Item:");
-						String item = scan.next().toLowerCase();
-						for (int i = 0; i < alugueis.size(); i++) {
-							String nomeItem = alugueis.get(i).getItem().getTitulo().toLowerCase();
-							if(nomeItem.contains(item)) {
-							System.out.println(i+1 + ") Usuario: "+alugueis.get(i).getUsuario().getNome()+" Item: "+ alugueis.get(i).getItem().getTitulo()+" Data: " + alugueis.get(i).getData());
-							}
-						}
-						break;
+            switch (key) {
+                case 1:
+                    if (alugueis.isEmpty()) {
+                        System.out.println("Não Ha Alugueis!");
+                    } else {
+                        System.out.println("Você Gostaria de Filtrar o Histórico de Alugueis?");
+                        System.out.println("1) Sim");
+                        System.out.println("2) Não");
+                        key = scan.nextInt();
 
-					default:
-						System.out.println("Insira a Data:");
-						String data = scan.next();
-						for (int i = 0; i < alugueis.size(); i++) {
-							if(alugueis.get(i).getData().contains(data)) {
-							System.out.println(i+1 + ") Usuario: "+alugueis.get(i).getUsuario().getNome()+" Item: "+ alugueis.get(i).getItem().getTitulo()+" Data: " + alugueis.get(i).getData());
-							}
-						}
-						break;
-					}
-					break;
+                        switch (key) {
+                            case 1:
+                                System.out.println("Como?");
+                                System.out.println("1) Usuário");
+                                System.out.println("2) Item");
+                                System.out.println("3) Data");
+                                key = scan.nextInt();
 
-				default:
-					for (int i = 0; i < alugueis.size(); i++) {
-						System.out.println(i+1 + ") Usuario: "+alugueis.get(i).getUsuario().getNome()+" Item: "+ alugueis.get(i).getItem().getTitulo()+" Data: " + alugueis.get(i).getData());
-					}
-					break;
-				}
-			}
-			break;
-			
-		default:
-			break;
-		}
-	}
+                                switch (key) {
+                                    case 1:
+                                        System.out.println("Insira o nome:");
+                                        String nome = scan.next().toLowerCase();
+
+                                        for (int i = 0; i < alugueis.size(); i++) {
+                                            String nomeUsuario = alugueis.get(i).getUsuario().getNome().toLowerCase();
+                                            if (nomeUsuario.contains(nome)) {
+                                                System.out.println(i + 1 + ") Usuário: " + alugueis.get(i).getUsuario().getNome()
+                                                        + " Item: " + alugueis.get(i).getItem().getTitulo()
+                                                        + " Data: " + alugueis.get(i).getData());
+                                            }
+                                        }
+                                        break;
+
+                                    case 2:
+                                        System.out.println("Insira o Item:");
+                                        String item = scan.next().toLowerCase();
+
+                                        for (int i = 0; i < alugueis.size(); i++) {
+                                            String nomeItem = alugueis.get(i).getItem().getTitulo().toLowerCase();
+                                            if (nomeItem.contains(item)) {
+                                                System.out.println(i + 1 + ") Usuário: " + alugueis.get(i).getUsuario().getNome()
+                                                        + " Item: " + alugueis.get(i).getItem().getTitulo()
+                                                        + " Data: " + alugueis.get(i).getData());
+                                            }
+                                        }
+                                        break;
+
+                                    default:
+                                        System.out.println("Insira a Data:");
+                                        String data = scan.next();
+
+                                        for (int i = 0; i < alugueis.size(); i++) {
+                                            if (alugueis.get(i).getData().contains(data)) {
+                                                System.out.println(i + 1 + ") Usuário: " + alugueis.get(i).getUsuario().getNome()
+                                                        + " Item: " + alugueis.get(i).getItem().getTitulo()
+                                                        + " Data: " + alugueis.get(i).getData());
+                                            }
+                                        }
+                                        break;
+                                }
+                                break;
+
+                            default:
+                                for (int i = 0; i < alugueis.size(); i++) {
+                                    System.out.println(i + 1 + ") Usuário: " + alugueis.get(i).getUsuario().getNome()
+                                            + " Item: " + alugueis.get(i).getItem().getTitulo()
+                                            + " Data: " + alugueis.get(i).getData());
+                                }
+                                break;
+                        }
+                    }
+                    break;
+
+                default:
+                    break;
+            }
+        } catch (InputMismatchException e) {
+            System.out.println("Entrada inválida. Certifique-se de inserir um número.");
+            scan.nextLine();  // Limpa o buffer do scanner
+        } catch (Exception e) {
+            System.out.println("Ocorreu um erro inesperado: " + e.getMessage());
+        }
+    }
 }

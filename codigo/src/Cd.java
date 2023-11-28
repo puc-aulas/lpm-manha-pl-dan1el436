@@ -3,9 +3,9 @@ public class Cd extends Item implements ItemAlugavel {
 	private int musicas;
 	private int duracao;
 	
-	public Cd(String titulo, String autor, String tipo, String anoPublicado, int quantidadeTotal,
-			int quantidadeDisponivel, int avaliacao, int musicas, int duracao) {
-		super(titulo, autor, tipo, anoPublicado, quantidadeTotal, quantidadeDisponivel, avaliacao);
+	public Cd(String titulo, String autor, String tema, String tipo, String anoPublicado, int quantidadeTotal,
+			int quantidadeDisponivel, int avaliacao, int duracao, int musicas) {
+		super(titulo, autor, tema, tipo, anoPublicado, quantidadeTotal, quantidadeDisponivel, avaliacao);
 		this.musicas = musicas;
 		this.duracao = duracao;
 	}

@@ -2,21 +2,25 @@
 public abstract class Item implements Comparable<Item>{
 	private String titulo;
 	private String autor;
+	private String tema;
 	private String tipo;
 	private String anoPublicado;
 	private int quantidadeTotal;
 	private int quantidadeDisponivel;
 	private int avaliacao;
+	private double pontuacao;
 	
-	public Item(String titulo, String autor, String tipo, String anoPublicado, int quantidadeTotal, int quantidadeDisponivel,
+	public Item(String titulo, String autor, String tema, String tipo, String anoPublicado, int quantidadeTotal, int quantidadeDisponivel,
 			int avaliacao) {
 		this.titulo = titulo;
 		this.autor = autor;
+		this.tema = tema;
 		this.tipo = tipo;
 		this.anoPublicado = anoPublicado;
 		this.quantidadeTotal = quantidadeTotal;
 		this.quantidadeDisponivel = quantidadeDisponivel;
 		this.avaliacao = avaliacao;
+		this.pontuacao = 0;
 	}
 
 	public String getTitulo() {
@@ -33,6 +37,14 @@ public abstract class Item implements Comparable<Item>{
 
 	public void setAutor(String autor) {
 		this.autor = autor;
+	}
+	
+	public String getTema() {
+		return tema;
+	}
+
+	public void setTema(String tema) {
+		this.tema = tema;
 	}
 
 	public String getTipo() {
@@ -75,9 +87,17 @@ public abstract class Item implements Comparable<Item>{
 		this.avaliacao = avaliacao;
 	}
 
+    public double getPontuacao() {
+		return pontuacao;
+	}
+
+	public void setPontuacao(double pontuacao) {
+		this.pontuacao = pontuacao;
+	}
+
     @Override
     public int compareTo(Item outroItem) {
-        return this.titulo.compareTo(outroItem.getTitulo());
+        return Double.compare(outroItem.getPontuacao(), this.getPontuacao());
     }
 
 }

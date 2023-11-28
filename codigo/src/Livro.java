@@ -4,9 +4,9 @@ public class Livro extends Item implements ItemAlugavel{
 	private String sinopse;
 
 
-	public Livro(String titulo, String autor, String tipo, String anoPublicado, int quantidadeTotal,
+	public Livro(String titulo, String autor, String tema, String tipo, String anoPublicado, int quantidadeTotal,
 			int quantidadeDisponivel, int avaliacao, String genero, String sinopse) {
-		super(titulo, autor, tipo, anoPublicado, quantidadeTotal, quantidadeDisponivel, avaliacao);
+		super(titulo, autor, tema, tipo, anoPublicado, quantidadeTotal, quantidadeDisponivel, avaliacao);
 		this.genero = genero;
 		this.sinopse = sinopse;
 	}

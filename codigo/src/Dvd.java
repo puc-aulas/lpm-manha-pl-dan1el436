@@ -5,9 +5,9 @@ public class Dvd extends Item implements ItemAlugavel {
 	private String genero;
 
 	
-	public Dvd(String titulo, String autor, String tipo, String anoPublicado, int quantidadeTotal,
+	public Dvd(String titulo, String autor, String tema, String tipo, String anoPublicado, int quantidadeTotal,
 			int quantidadeDisponivel, int avaliacao, int duracao, String genero) {
-		super(titulo, autor, tipo, anoPublicado, quantidadeTotal, quantidadeDisponivel, avaliacao);
+		super(titulo, autor, tema, tipo, anoPublicado, quantidadeTotal, quantidadeDisponivel, avaliacao);
 		this.duracao = duracao;
 		this.genero = genero;
 	}
